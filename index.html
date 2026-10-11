@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Precious ♡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b24;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background */
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 20%, #5636a8 0%, transparent 35%),
+                radial-gradient(circle at 80% 80%, #a94d78 0%, transparent 30%),
+                linear-gradient(135deg, #080b24, #15133b);
+        }
+
+        .star {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: moveStar 7s linear infinite;
+        }
+
+        @keyframes moveStar {
+            from {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            30% {
+                opacity: 0.8;
+            }
+            to {
+                transform: translateY(-20vh);
+                opacity: 0;
+            }
+        }
+
+        /* Opening screen */
+        #welcome {
+            position: fixed;
+            inset: 0;
+            background: #080b24;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 100;
+            transition: opacity 1s ease;
+        }
+
+        #welcome.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .welcome-box {
+            padding: 30px;
+        }
+
+        .tiny {
+            color: #f1d58a;
+            font-size: 12px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-box h1 {
+            font-family: Georgia, serif;
+            font-size: 75px;
+            background: linear-gradient(90deg, #ffffff, #c8b6ff, #f4a8c8);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .welcome-box p {
+            color: #c8c9d9;
+            margin-bottom: 30px;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+        }
+
+        #enterButton {
+            padding: 15px 32px;
+            border-radius: 50px;
+            color: white;
+            font-size: 15px;
+            background: linear-gradient(90deg, #6f4bc4, #c05b8a);
+            box-shadow: 0 10px 35px rgba(140, 80, 200, 0.4);
+            transition: 0.3s;
+        }
+
+        #enterButton:hover {
+            transform: scale(1.05);
+        }
+
+        /* Main website */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .label {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            color: #f1d58a;
+            background: rgba(255,255,255,0.05);
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .hero h2 {
+            font-family: Georgia, serif;
+            font-size: 55px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #c8b6ff, #f4a8c8);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.8;
+            color: #c9cada;
+        }
+
+        /* Sections */
+        section {
+            padding: 90px 0;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title small {
+            color: #f1d58a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .title h3 {
+            font-family: Georgia, serif;
+            font-size: 38px;
+            margin-top: 10px;
+        }
+
+        /* Letter */
+        .letter {
+            max-width: 750px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+        }
+
+        .letter p {
+            color: #d6d7e3;
+            line-height: 2;
+            margin-bottom: 18px;
+        }
+
+        .signature {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            color: #f4a8c8;
+            margin-top: 25px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+            min-height: 210px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(111,75,196,0.2), rgba(192,91,138,0.08));
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: #c8b6ff;
+        }
+
+        .card .icon {
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .card h4 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            display: none;
+            color: #cfd0df;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .card.open p {
+            display: block;
+        }
+
+        .card.open h4 {
+            color: #f4a8c8;
+        }
+
+        /* Promise */
+        .promise {
+            text-align: center;
+            padding: 70px 30px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .promise h3 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .promise p {
+            max-width: 650px;
+            margin: auto;
+            color: #cfd0df;
+            line-height: 1.8;
+        }
+
+        /* Surprise */
+        .surprise {
+            text-align: center;
+        }
+
+        #surpriseButton {
+            padding: 15px 30px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #7652c9, #c75d91);
+            color: white;
+            font-size: 15px;
+        }
+
+        #surpriseMessage {
+            display: none;
+            max-width: 700px;
+            margin: 30px auto 0;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            line-height: 1.9;
+            color: #d8d9e4;
+        }
+
+        #surpriseMessage.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #777b98;
+        }
+
+        footer span {
+            color: #f4a8c8;
+        }
+
+        /* Phone */
+        @media (max-width: 700px) {
+            .welcome-box h1 {
+                font-size: 60px;
+            }
+
+            .hero h2 {
+                font-size: 42px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .letter {
+                padding: 25px;
+            }
+
+            .promise h3 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <!-- Opening screen -->
+    <div id="welcome">
+        <div class="welcome-box">
+            <div class="tiny">
+                A LITTLE SOMETHING FOR
+            </div>
+            <h1>Precious</h1>
+            <p>
+                Because sometimes a little light is all we need.
+            </p>
+            <button id="enterButton">
+                Open this ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- Main website -->
+    <div class="container">
+
+        <div class="hero">
+            <div>
+                <div class="label">
+                    Made with care · From Jeffrey
+                </div>
+                <h2>
+                    For someone who deserves
+                    <span class="gradient-text">
+                        brighter days.
+                    </span>
+                </h2>
+                <p>
+                    Precious, I made this little place for you because
+                    I wanted you to have something that reminds you
+                    that you are cared for, appreciated and never
+                    forgotten.
+                </p>
+            </div>
+        </div>
+
+        <!-- Letter -->
+        <section>
+            <div class="title">
+                <small>A letter for you</small>
+                <h3>
+                    Just a few words
+                </h3>
+            </div>
+            <div class="letter">
+                <p>
+                    Dear Precious,
+                </p>
+                <p>
+                    I know things haven't been easy lately.
+                    I wish I could take every difficult moment
+                    away from you, but I know I can't.
+                </p>
+                <p>
+                    So instead, I made you this little place.
+                    Somewhere you can come whenever you need
+                    a reminder that someone genuinely cares
+                    about you.
+                </p>
+                <p>
+                    You don't have to pretend to be okay all
+                    the time. Take things one day at a time.
+                    Be gentle with yourself.
+                </p>
+                <p>
+                    And whenever you forget how special you are,
+                    I hope this reminds you.
+                </p>
+                <div class="signature">
+                    — Jeffrey ♡
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive cards -->
+        <section>
+            <div class="title">
+                <small>Whenever you need it</small>
+                <h3>
+                    Open one
+                </h3>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">🌷</div>
+                    <h4>
+                        When you're sad
+                    </h4>
+                    <p>
+                        It's okay not to be okay.
+                        You don't have to hide your feelings.
+                        Take a breath and take things slowly.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">✨</div>
+                    <h4>
+                        When you doubt yourself
+                    </h4>
+                    <p>
+                        One difficult moment doesn't define
+                        your whole story. There are still
+                        beautiful moments ahead of you.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">💜</div>
+                    <h4>
+                        When you need a smile
+                    </h4>
+                    <p>
+                        Somewhere out there, Jeffrey is probably
+                        thinking about how to make Precious smile again.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promise -->
+        <section>
+            <div class="promise">
+                <h3>
+                    Brighter days are coming.
+                </h3>
+                <p>
+                    Today doesn't have to be perfect.
+                    Tomorrow doesn't have to be perfect either.
+                    Just keep going, one day at a time.
+                    There are still beautiful moments waiting
+                    for you.
+                </p>
+            </div>
+        </section>
+
+        <!-- Surprise -->
+        <section class="surprise">
+            <div class="title">
+                <small>
+                    One last thing
+                </small>
+                <h3>
+                    I saved something for you
+                </h3>
+            </div>
+            <button id="surpriseButton">
+                Reveal the message 💌
+            </button>
+            <div id="surpriseMessage">
+                Precious, I don't know exactly what the future
+                looks like, and I don't want to put pressure
+                on you.
+                <br><br>
+                I just want you to know that my feelings for
+                you are real.
+                <br><br>
+                I care about your happiness, your peace,
+                and that beautiful smile of yours.
+                <br><br>
+                So if this website gives you even one little
+                smile today...
+                <br><br>
+                Then it was worth making.
+                <br><br>
+                <strong>
+                    — Jeffrey ♡
+                </strong>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        Made with <span>♡</span> by Jeffrey for Precious
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // OPEN WEBSITE
+        var enterButton = document.getElementById("enterButton");
+        var welcome = document.getElementById("welcome");
+        enterButton.onclick = function() {
+            welcome.classList.add("hide");
+        };
+
+        // INTERACTIVE CARDS
+        var cards = document.querySelectorAll(".card");
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].onclick = function() {
+                this.classList.toggle("open");
+            };
+        }
+
+        // SURPRISE MESSAGE
+        var surpriseButton = document.getElementById("surpriseButton");
+        var surpriseMessage = document.getElementById("surpriseMessage");
+        surpriseButton.onclick = function() {
+            surpriseMessage.classList.toggle("show");
+            if (surpriseMessage.classList.contains("show")) {
+                surpriseButton.innerHTML = "Hide the message ♡";
+            } else {
+                surpriseButton.innerHTML = "Reveal the message 💌";
+            }
+        };
+
+        // CREATE STARS
+        for (var i = 0; i < 35; i++) {
+            var star = document.createElement("div");
+            star.className = "star";
+            star.style.left = Math.random() * 100 + "%";
+            star.style.animationDelay = Math.random() * 7 + "s";
+            star.style.animationDuration = (5 + Math.random() * 6) + "s";
+            document.body.appendChild(star);
+        }
+    </script>
+</body>
+</html>
